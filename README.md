@@ -1,7 +1,3 @@
-# curl-quiz
-
-A quiz where you need to learn quiz to get to each question
-
 ## Curl Challenge
 
 This lab should be easy enough, apply some CLI knowledge and the man page for curl to get the encoding/encryption challenges. Once you have the challenge you need to decode it to get the flag. Your target is the web server at 192.168.22.100
@@ -20,8 +16,7 @@ Then Atbash is the reversing of an alphabet to make z>a == a>z
 
 ##### Flask
 
-
-
+https://stackoverflow.com/questions/24892035/how-can-i-get-the-named-parameters-from-a-url-using-flask
 
 
 ### Challenge 2 - HTTP/1.0 and Caesar Cipher
@@ -54,12 +49,11 @@ Make a HTTP PATCH request to http://192.168.22.100/challenge3
 
 ##### Answer
 
-
+`curl -X PATCH https://example/contact`
 
 ##### Flask
 
 https://stackoverflow.com/questions/49093115/put-request-python-flask/49093353
-
 
 
 ##### Encryption Challenge
@@ -68,8 +62,17 @@ https://stackoverflow.com/questions/49093115/put-request-python-flask/49093353
 
 
 
-### Challenge 4 - POST Request with JSON content and XOR
+### Challenge 4 - POST Request with JSON content and Base64 + Base85
 
-```
-curl -X POST -H "Content-Type: application/json" \    -d '{"name": "linuxize", "email": "linuxize@example.com"}' \    https://example/contact
-```
+##### Answer
+
+`curl -X POST -H "Content-Type: application/json" -d '{"json": true}' https://example/contact`
+
+##### Flask
+
+https://techtutorialsx.com/2017/01/07/flask-parsing-json-data/
+
+##### Encoding Challenge 
+
+`JSON is cool` < `SlNPTiBpcyBjb29s` < `;f#3*<,"[<@sLCU@PTrb`
+
