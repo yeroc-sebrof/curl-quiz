@@ -6,11 +6,11 @@ This lab should be easy enough, apply some CLI knowledge and the man page for cu
 
 ### Challenge 1 - Different port + GET Param and Atbash
 
-To get the encoding challenge for this one send a GET request to 192.168.22.100/challenge2 with a two parameters, one called encoding2 with the value "ElectricBoogaloo" and the other called Delimiters with the value "AreEasy"
+To get the encoding challenge for this one send a GET request to 192.168.22.100/challenge1 with a two parameters, one called encoding2 with the value "ElectricBoogaloo" and the other called Delimiters with the value "AreEasy"
 
 ##### Answer
 
-http://192.168.22.100/challenge2?encoding2=ElectricBoogaloo
+`curl http://192.168.22.100/challenge2?encoding2=ElectricBoogaloo`
 
 Then Atbash is the reversing of an alphabet to make z>a == a>z
 
@@ -75,4 +75,59 @@ https://techtutorialsx.com/2017/01/07/flask-parsing-json-data/
 ##### Encoding Challenge 
 
 `JSON is cool` < `SlNPTiBpcyBjb29s` < `;f#3*<,"[<@sLCU@PTrb`
+
+
+
+### Challenge 5 - Provide Site HTTPS Certificate Manually and Vigenere Cipher
+
+https://192.168.22.100/challenge5
+
+##### Answer
+
+`curl -E wk.cert https://192.168.22.100/challenge5`
+
+##### Flask
+
+
+
+
+##### Encryption Challenge
+
+
+
+
+
+### Challenge 6 - HTTP 2.0 and a Header + Sub Cipher
+
+http://192.168.22.100/challenge6
+
+##### Answer
+
+`curl --http2 http://192.168.22.100/challenge6`
+
+##### Flask
+
+
+
+
+##### Encryption Challenge
+
+
+
+
+
+### Challenge 7 - PUT a file then GET and XOR
+
+http://192.168.22.100/challenge7
+
+##### Answer
+
+`curl http://192.168.22.100/challenge7`
+
+##### Flask
+
+https://stackoverflow.com/questions/49093115/put-request-python-flask/49093353
+
+
+##### Encryption Challenge
 
