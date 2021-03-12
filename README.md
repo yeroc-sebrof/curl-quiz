@@ -10,7 +10,7 @@ To get the encoding challenge for this one send a GET request to 192.168.22.100/
 
 ##### Answer
 
-`curl http://192.168.22.100/challenge2?encoding2=ElectricBoogaloo`
+`curl http://192.168.22.100/challenge2?encoding=isCool`
 
 Then Atbash is the reversing of an alphabet to make z>a == a>z
 
@@ -35,11 +35,11 @@ Then Rot 10
 
 ##### Encoding Challenge
 
-GRY GYEVN RKFO UXYGX DRKD TEVSEC MKOCKB'C MSZROB GYEVN LO CY ZYZEVKB KVV DROCO IOKBC VKDOB. KXIGKI FKEVDSXQ NSCDYBD NBEWWYXN SC DRO PVKQ. UOOZ DRO CZKMOC
+MXE-MEKBT-XQLU-ADEMD-JXQJ-ZKBYKI-SQUIQH'I-SYFXUH-MEKBT-RU-IE-FEFKBQH-QBB-JXUIU-OUQHI-BQJUH.QDOMQO-LQKBJYDW-TYIJEHJ-THKCCEDT-YI-JXU-VBQW.AUUF-JXU-TQIXUI
 
 > Decodes to:
 >
-> Who would have known that Julius Caesar's cipher would be so popular all these years later. Anyway Vaulting Distort Drummond is the flag. Keep the spaces
+> Who would have known that Julius Caesar's cipher would be so popular all these years later. Anyway Vaulting Distort Drummond is the flag. Keep the dashes
 
 
 
@@ -63,6 +63,8 @@ https://stackoverflow.com/questions/49093115/put-request-python-flask/49093353
 
 
 ### Challenge 4 - POST Request with JSON content and Base64 + Base85
+
+POST some JSON content for this one, similar to above where encoding was set to isCool, now set "WeGonnaRockDownTo" to "ElectricBoogaloo"
 
 ##### Answer
 
