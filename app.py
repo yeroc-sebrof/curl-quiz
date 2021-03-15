@@ -1,8 +1,16 @@
 from flask import Flask, render_template, request
+from flask_httpauth import HTTPBasicAuth
 from flask_wtf import Form
 from random import choice as pick_one
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+auth = HTTPBasicAuth()
+
+# Password is in this list https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/500-worst-passwords.txt
+users = {
+    "real": generate_password_hash("sunshine")
+}
 
 every_method = ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'TRACE', 'PATCH']
 
@@ -87,7 +95,7 @@ def challenge1hint1():
 
 @app.route('/challenge1/hint2', methods=every_method)
 def challenge1hint2():
-    return "Have a look at old encoding methods, this ones been around for 3000 years"
+    return "Have a look at old encoding methods, this ones been around for 3000 years so will be super secure."
 
 #############################################
 
@@ -104,7 +112,7 @@ def challenge2hint1():
 
 @app.route('/challenge2/hint2', methods=every_method)
 def challenge2hint2():
-    return "Have a look at old encoding methods, this ones been around for almost 2000 years"
+    return "Have a look at old encoding methods, this ones only been around for almost 2000 years. Even the Romans know how to decrypt it"
 
 #############################################
 
@@ -121,7 +129,9 @@ def challenge3hint1():
 
 @app.route('/challenge3/hint2', methods=every_method)
 def challenge3hint2():
-    return "Look into encryption that provides a string of the same length, Cyberchef has some good tools for this but you might need to google for a different one"
+    return "Look into encryption that provides a string of the same length, Cyberchef has some good tools for identifying this but you might need to google for something else"
+
+# https://www.md5online.org/md5-decrypt.html
 
 #############################################
 
@@ -155,25 +165,11 @@ def challenge4hint1():
 
 @app.route('/challenge4/hint2', methods=every_method)
 def challenge4hint2():
-    return ""
+    return "Look into encoding methods like Base64"
 
 #############################################
 
-@app.route('/challenge5', methods=['GET'])
-def challenge5():
-    if (request.method == "PATCH"):
-        return "Challenge String: 5c577753706cdcef8621a9c0c1922158"
-    else:
-        return pick_one(not_right)
+# if (request.headers.get('User-Agent').toLower() == "curl/*" or request.headers.get('User-Agent').toLower() == "wget/")
 
-@app.route('/challenge5/hint1', methods=every_method)
-def challenge5hint1():
-    return "Make sure to run `man curl`"
-
-@app.route('/challenge5/hint2', methods=every_method)
-def challenge5hint2():
-    return ""
-
-#############################################
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    app.run(debug=True, host='0.0.0.0', port=80)
