@@ -3,6 +3,8 @@ from flask_httpauth import HTTPBasicAuth
 from flask_wtf import Form
 from random import choice as pick_one
 from werkzeug.security import generate_password_hash, check_password_hash
+import re
+import os
 
 app = Flask(__name__)
 auth = HTTPBasicAuth()
@@ -82,16 +84,44 @@ def method_not_allowed(e):
 
 #############################################
 
+if (os.getenv("PORT") == "8080"):
+    @app.route('/challenge5', methods=['GET'])
+    def challenge5():
+        return "Challenge String: Vjgfqgug it a qugwvy dopo vrql"
+
+    @app.route('/challenge5/hint1', methods=every_method)
+    def challenge5hint1():
+        if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
+            return "Have a look at old encoding methods, this ones been around for almost 2000 years"
+        else:
+            return "Are you using Curl or wget? I don't think you are"
+
+    @app.route('/challenge5/hint2', methods=every_method)
+    def challenge5hint2():
+        if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
+            return "Have a look at old encoding methods, this ones been around for almost 2000 years"
+        else:
+            return "Are you using Curl or wget? I don't think you are"
+
+    if __name__ == '__main__':
+        app.run(debug=True, host='0.0.0.0', port=8080)
+        exit(0)
+
+#############################################
+
 @app.route('/challenge1', methods=['GET'])
 def challenge1():
-    if (request.args.get("whoAreYou") == "AHacker"):
+    if (request.args.get("whoAreYou") == "AHacker" and request.args.get("areYouSure") == "yes" and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Challenge String: hfkvi-xllo-xozhhrx-xrksvi"
     else:
         return pick_one(not_right)
 
 @app.route('/challenge1/hint1', methods=every_method)
 def challenge1hint1():
-    return "Have a look at this https://www.seobility.net/en/wiki/GET_Parameters#Using_Get_Parameters"
+    if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
+        return "Have a look at this https://www.seobility.net/en/wiki/GET_Parameters#Using_Get_Parameters, also think about how your Curl command is being interpreted on the CLI"
+    else:
+        return "Are you using Curl or wget? I don't think you are"
 
 @app.route('/challenge1/hint2', methods=every_method)
 def challenge1hint2():
@@ -101,14 +131,17 @@ def challenge1hint2():
 
 @app.route('/challenge2', methods=['GET'])
 def challenge2():
-    if (request.environ.get('SERVER_PROTOCOL') == "HTTP/1.0"):
+    if (request.environ.get('SERVER_PROTOCOL') == "HTTP/1.0" and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Challenge String: MXE-MEKBT-XQLU-ADEMD-JXQJ-ZKBYKI-SQUIQH'I-SYFXUH-MEKBT-RU-IE-FEFKBQH-QBB-JXUIU-OUQHI-BQJUH.QDOMQO-LQKBJYDW-TYIJEHJ-THKCCEDT-YI-JXU-VBQW.AUUF-JXU-TQIXUI"
     else:
         return pick_one(not_right)
 
 @app.route('/challenge2/hint1', methods=every_method)
 def challenge2hint1():
-    return "Make sure to run `man curl`"
+    if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
+        return "Make sure to run `man curl`"
+    else:
+        return "Are you using Curl or wget? I don't think you are"
 
 @app.route('/challenge2/hint2', methods=every_method)
 def challenge2hint2():
@@ -118,14 +151,17 @@ def challenge2hint2():
 
 @app.route('/challenge3', methods=every_method)
 def challenge3():
-    if (request.method == "PATCH"):
+    if (request.method == "PATCH" and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Challenge String: 5c577753706cdcef8621a9c0c1922158"
     else:
         return pick_one(not_right)
 
 @app.route('/challenge3/hint1', methods=every_method)
 def challenge3hint1():
-    return "Make sure to run `man curl`"
+    if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
+        return "Make sure to run `man curl`"
+    else:
+        return "Are you using Curl or wget? I don't think you are"
 
 @app.route('/challenge3/hint2', methods=every_method)
 def challenge3hint2():
@@ -137,7 +173,7 @@ def challenge3hint2():
 
 @app.route('/challenge4', methods=['GET', 'POST'])
 def challenge4():
-    if (request.method == "POST"):
+    if (request.method == "POST" and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         if (request.content_type == "application/json"):
             try:
                 request.get_json(force=True)
@@ -161,13 +197,20 @@ def challenge4():
 
 @app.route('/challenge4/hint1', methods=every_method)
 def challenge4hint1():
-    return "Make sure to run `man curl`"
+    if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
+        return "Make sure to run `man curl`"
+    else:
+        return "Are you using Curl or wget? I don't think you are"
 
 @app.route('/challenge4/hint2', methods=every_method)
 def challenge4hint2():
     return "Look into encoding methods like Base64"
 
 #############################################
+
+@app.route('/challenge5/hint1', methods=every_method)
+def challenge5hint1():
+    return "Have a look into common TCP ports"
 
 # if (request.headers.get('User-Agent').toLower() == "curl/*" or request.headers.get('User-Agent').toLower() == "wget/")
 

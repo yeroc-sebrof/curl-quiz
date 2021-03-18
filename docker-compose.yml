@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  quiz-80:
+    build: .
+
+  quiz-8080:
+    build: .
+    env_file:
+      - 8080.env
