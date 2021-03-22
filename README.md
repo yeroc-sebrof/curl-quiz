@@ -6,121 +6,67 @@ This lab should be easy enough, apply some CLI knowledge and the man page for cu
 
 ### Challenge 1 - Different port + GET Param and Atbash
 
-To get the encoding challenge for this one send a GET request to 192.168.22.100/challenge1 with a two parameters, one called encoding2 with the value "ElectricBoogaloo" and the other called Delimiters with the value "AreEasy"
+To get the encoding challenge for this one send a GET request to 192.168.22.100/challenge1 with a two parameters, one called whoAreYou with the value AHacker and the other called areYouSure with the value yes
 
 ##### Answer
 
-`curl http://192.168.22.100/challenge2?encoding=isCool`
+`curl http://192.168.22.100/challenge1?whoAreYou=AHacker&areYouSure=yes`
 
-Then Atbash is the reversing of an alphabet to make z>a == a>z
-
-##### Flask
-
-https://stackoverflow.com/questions/24892035/how-can-i-get-the-named-parameters-from-a-url-using-flask
+- Challenge String: hfkvi-xllo-xozhhrx-xrksvi
+- Atbash is the reversing of an alphabet to make z>a == a>z
+    - http://rumkin.com/tools/cipher/atbash.php
+- Resolves to: super-cool-classic-cipher
 
 
 ### Challenge 2 - HTTP/1.0 and Caesar Cipher
 
-To get the encoding challenge make a HTTP/1.0 request to http://192.168.22.100/challenge1, for extra style points you can do this using netcat
+To get this encoding challenge make a HTTP/1.0 request to http://192.168.22.100/challenge2. Curl will default to doing a HTTP/1.1 request
 
 ##### Answer
 
-https://stackoverflow.com/questions/45390338/how-to-use-curl-to-generate-http-1-0-request-for-a-file-without-a-leading-slash
+`curl --http1.0 http://172.17.0.2/challenge2`
 
-Then Rot 10
-
-##### Flask
-
-`request.environ.get('SERVER_PROTOCOL') # Search for HTTP/1.0 only`
-
-##### Encoding Challenge
-
-MXE-MEKBT-XQLU-ADEMD-JXQJ-ZKBYKI-SQUIQH'I-SYFXUH-MEKBT-RU-IE-FEFKBQH-QBB-JXUIU-OUQHI-BQJUH.QDOMQO-LQKBJYDW-TYIJEHJ-THKCCEDT-YI-JXU-VBQW.AUUF-JXU-TQIXUI
-
-> Decodes to:
->
-> Who would have known that Julius Caesar's cipher would be so popular all these years later. Anyway Vaulting Distort Drummond is the flag. Keep the dashes
-
-
+- Challenge String: `MXE-MEKBT-XQLU-ADEMD-JXQJ-ZKBYKI-SQUIQH'I-SYFXUH-MEKBT-RU-IE-FEFKBQH-QBB-JXUIU-OUQHI-BQJUH.QDOMQO-LQKBJYDW-TYIJEHJ-THKCCEDT-YI-JXU-VBQW.AUUF-JXU-TQIXUI`
+- A Rotation of 10 characters using the Caesar/Rot13 Cipher
+- Resolves to: `Who would have known that Julius Caesar's cipher would be so popular all these years later. Anyway Vaulting Distort Drummond is the flag. Keep the dashes`
 
 ### Challenge 3 - PATCH request and MD5 secret
 
-Make a HTTP PATCH request to http://192.168.22.100/challenge3
+HTTP 1.1 has a fair few methods that are documented but anyone could make any method they wanted. In this case make a HTTP PATCH request to http://192.168.22.100/challenge3
 
 ##### Answer
 
-`curl -X PATCH https://example/contact`
+`curl -X PATCH http://172.17.0.2/challenge3`
 
-##### Flask
-
-https://stackoverflow.com/questions/49093115/put-request-python-flask/49093353
-
-
-##### Encryption Challenge
-
- 5c577753706cdcef8621a9c0c1922158 == md5 is broken
-
-
+- Challenge String: 5c577753706cdcef8621a9c0c1922158
+- https://www.md5online.org/md5-decrypt.html is the first result on Google when searching "md5 decrypt"
+- Decodes to: md5 is broken
 
 ### Challenge 4 - POST Request with JSON content and Base64 + Base85
 
-POST some JSON content for this one, similar to above where encoding was set to isCool, now set "WeGonnaRockDownTo" to "ElectricBoogaloo"
+POST some JSON content for this one (in a similar fashion to above where encoding was set to whoAreYou) now in your POST Requests JSON body, set "WeGonnaRockDownTo" to "ElectricBoogaloo"
 
 ##### Answer
 
-`curl -X POST -H "Content-Type: application/json" -d '{"json": true}' https://example/contact`
+`curl -X POST -H "Content-Type: application/json" -d '{"WeGonnaRockDownTo":"ElectricBoogaloo"}' http://172.17.0.2/challenge4`
 
-##### Flask
-
-https://techtutorialsx.com/2017/01/07/flask-parsing-json-data/
-
-##### Encoding Challenge 
-
-`JSON is cool` < `SlNPTiBpcyBjb29s` < `;f#3*<,"[<@sLCU@PTrb`
+- Challenge String: `;f#3*<,"[<@sLCU@PTrb`
+- Base85 Decode to: `SlNPTiBpcyBjb29s`
+- Base64 Decode to: `JSON is cool`
 
 
+### Challenge 5 - Request a different TCP Port and Vigenere Cipher
 
-### Challenge 5 - Provide Site HTTPS Certificate Manually and Vigenere Cipher
-
-https://192.168.22.100/challenge5
+An easy challenge now that we're near the end. Send a GET request to port 8080 for this one
 
 ##### Answer
 
-`curl -E wk.cert https://192.168.22.100/challenge5`
-
-##### Flask
+`curl "http://172.17.0.2:8080/challenge5"`
 
 
+### Challenge 6 - PUT and XOR
 
-
-##### Encryption Challenge
-
-
-
-
-
-### Challenge 6 - HTTP 2.0 and a Header + Sub Cipher
-
-http://192.168.22.100/challenge6
-
-##### Answer
-
-`curl --http2 http://192.168.22.100/challenge6`
-
-##### Flask
-
-
-
-
-##### Encryption Challenge
-
-
-
-
-
-### Challenge 7 - PUT a file then GET and XOR
-
-http://192.168.22.100/challenge7
+Start by running `echo "superMegaFinalFlagFile" > file.txt` then upload that file using the HTTP PUT method to challenge7
 
 ##### Answer
 
