@@ -63,19 +63,20 @@ An easy challenge now that we're near the end. Send a GET request to port 8080 f
 
 `curl "http://172.17.0.2:8080/challenge5"`
 
+- Challenge String: `Vjgfqgug it a qugwvy dopo vrql`
+- https://www.boxentriq.com/code-breaking/vigenere-cipher has a auto-solver
+- The secret key is `ababdcdc`
+- Decodes to: `vigenere is a pretty cool tool`
 
 ### Challenge 6 - PUT and XOR
 
-Start by running `echo "superMegaFinalFlagFile" > file.txt` then upload that file using the HTTP PUT method to challenge7
+Start by running `echo "superMegaFinalFlagFile" > file.txt` then upload that file using the HTTP PUT method to challenge6
 
 ##### Answer
 
-`curl http://192.168.22.100/challenge7`
+`curl -T ./file.txt -X PUT http://172.18.0.2/challenge6` or `curl --upload-file ./file.txt -X PUT http://172.18.0.2/challenge6`
 
-##### Flask
-
-https://stackoverflow.com/questions/49093115/put-request-python-flask/49093353
-
-
-##### Encryption Challenge
+- Challenge String: `07 0d 0a 06 72 1d 1c 17 63 10 1c 06 1c 01 0a 1b 15 65 00 11 16 13 14 65 1a 16 63 02 1b 09 17 65 0a 75 11 04 1d 11 63 17 17 09 1a 13 06 75 1a 0a 04 65 14 10 1e 09 73 0c 17 75 05 0a 01 0e 10 75 13 0b 17 65 0b 1a 05 65 00 00 00 00 00 00 73 0c 17 75 1b 16 73 11 0c 1a 7c 65 1d 0a 17 1c 11 00 73 0d 0c 02 72 0c 73 10 10 10 72 11 1b 00 63 1e 17 1c 73 0c 0d 75 06 0d 16 65 17 10 0a 11 73 04 0d 11 72 11 1b 00 0d 75 06 0d 16 65 17 10 0a 11 73 11 16 07 1c 16 73 0c 0d 01 1d 65 63 62 10 75 13 0b 0a 12 02 0c 72 11 1b 00 63 13 1e 04 14 65 0a 06 72 1d 1c 17 6e 1c 01 68 10 0a 0c 19 7c 65 12 0b 07 75 06 0d 12 11 64 06 72 11 1b 00 63 13 1b 0b 12 09 63 13 1e 04 14 65 0c 13 72 11 1b 0c 10 75 11 0d 12 09 0f 10 1c 02 16 65 0a 75 1a 0a 03 00 63 0c 1d 10 74 13 06 75 17 0b 19 0a 1a 10 16 65 12 0b 07 75 1b 65 12 09 10 1a 72 0d 1c 15 06 75 06 0d 1a 16 63 1c 01 65 16 0b 0c 00 15 0d 73 11 06 0d 06 65 07 0a 63 18 13 0e 16 65 1b 1a 00 65 11 17 16 01 17 65 15 0a 11 16 17 65 12 0b 63 1a 02 11 1a 0a 0d`
+- `https://gchq.github.io/CyberChef/#recipe=From_Hex('Auto')XOR(%7B'option':'UTF8','string':'SECURE'%7D,'Standard',false)&input=MDcgMGQgMGEgMDYgNzIgMWQgMWMgMTcgNjMgMTAgMWMgMDYgMWMgMDEgMGEgMWIgMTUgNjUgMDAgMTEgMTYgMTMgMTQgNjUgMWEgMTYgNjMgMDIgMWIgMDkgMTcgNjUgMGEgNzUgMTEgMDQgMWQgMTEgNjMgMTcgMTcgMDkgMWEgMTMgMDYgNzUgMWEgMGEgMDQgNjUgMTQgMTAgMWUgMDkgNzMgMGMgMTcgNzUgMDUgMGEgMDEgMGUgMTAgNzUgMTMgMGIgMTcgNjUgMGIgMWEgMDUgNjUgMDAgMDAgMDAgMDAgMDAgMDAgNzMgMGMgMTcgNzUgMWIgMTYgNzMgMTEgMGMgMWEgN2MgNjUgMWQgMGEgMTcgMWMgMTEgMDAgNzMgMGQgMGMgMDIgNzIgMGMgNzMgMTAgMTAgMTAgNzIgMTEgMWIgMDAgNjMgMWUgMTcgMWMgNzMgMGMgMGQgNzUgMDYgMGQgMTYgNjUgMTcgMTAgMGEgMTEgNzMgMDQgMGQgMTEgNzIgMTEgMWIgMDAgMGQgNzUgMDYgMGQgMTYgNjUgMTcgMTAgMGEgMTEgNzMgMTEgMTYgMDcgMWMgMTYgNzMgMGMgMGQgMDEgMWQgNjUgNjMgNjIgMTAgNzUgMTMgMGIgMGEgMTIgMDIgMGMgNzIgMTEgMWIgMDAgNjMgMTMgMWUgMDQgMTQgNjUgMGEgMDYgNzIgMWQgMWMgMTcgNmUgMWMgMDEgNjggMTAgMGEgMGMgMTkgN2MgNjUgMTIgMGIgMDcgNzUgMDYgMGQgMTIgMTEgNjQgMDYgNzIgMTEgMWIgMDAgNjMgMTMgMWIgMGIgMTIgMDkgNjMgMTMgMWUgMDQgMTQgNjUgMGMgMTMgNzIgMTEgMWIgMGMgMTAgNzUgMTEgMGQgMTIgMDkgMGYgMTAgMWMgMDIgMTYgNjUgMGEgNzUgMWEgMGEgMDMgMDAgNjMgMGMgMWQgMTAgNzQgMTMgMDYgNzUgMTcgMGIgMTkgMGEgMWEgMTAgMTYgNjUgMTIgMGIgMDcgNzUgMWIgNjUgMTIgMDkgMTAgMWEgNzIgMGQgMWMgMTUgMDYgNzUgMDYgMGQgMWEgMTYgNjMgMWMgMDEgNjUgMTYgMGIgMGMgMDAgMTUgMGQgNzMgMTEgMDYgMGQgMDYgNjUgMDcgMGEgNjMgMTggMTMgMGUgMTYgNjUgMWIgMWEgMDAgNjUgMTEgMTcgMTYgMDEgMTcgNjUgMTUgMGEgMTEgMTYgMTcgNjUgMTIgMGIgNjMgMWEgMDIgMTEgMWEgMGEgMGQ`
+- Decodes to: `THIS XOR ENCODING STUFF IS WILD I CANT BELIVE HOW WELL IT WORKS AND HOW SECURE IT IS TOO. NOTICE HOW I USE THE KEY IN THE TEXT AND THEN THE TEXT TURNS INTO 0'S ANYWAY THE FLAG IS XOR-IS-COOL. AND THAT'S THE FINAL FLAG OF THIS CHALLENGE I HOPE YOU'VE ENJOYED AND I ALSO HOPE THIS IS ENOUGH TEXT TO MAKE XOR BRUTE FORCE AN OPTION`
 

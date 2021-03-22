@@ -123,7 +123,14 @@ def challenge5hint1():
 @app.route('/challenge5/hint2', methods=every_method)
 def challenge5hint2():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
-        return "Have a look at old encoding methods, this ones been around for almost 2000 years"
+        return "Have you heard of Vigenere?"
+    else:
+        return "Are you using Curl or wget? I don't think you are"
+
+@app.route('/challenge5/hint3', methods=every_method)
+def challenge5hint3():
+    if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
+        return "The code is ababdcdc"
     else:
         return "Are you using Curl or wget? I don't think you are"
 

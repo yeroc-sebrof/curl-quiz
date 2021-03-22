@@ -1,11 +1,36 @@
-<html>
-    <head>
-        <link rel="stylesheet" href='/static/style.css' />
-    </head>
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>Curl Challenge</title>
+<link rel="stylesheet" href='/static/style.css' />
+</head>
 
-    <body>
-        <h1>Curl Quiz</h1>
-        <h3>In order to begin, please enter a username:</h3>
-        
-    </body>
-</html>
+
+
+<body><center><h1>Welcome to the cURL challenge!</h1></center>
+<center><img src="/static/curl_logo.png"></center>
+<center><h1>-- --=[Challenges]=-- --</h1></center>
+
+<h2>There is no order to the challenges for this lab, have a go at:</h2>
+
+<p><a href="/challenge1">Challenge 1</a> - To get the encoding challenge for this one send a GET request with two parameters, one called whoAreYou with the value AHacker and the other called areYouSure with the value yes</p><br>
+
+<p><a href="/challenge2">Challenge 2</a> - To get this encoding challenge, make your request use HTTP/1.0</p><br>
+
+<p><a href="/challenge3">Challenge 3</a> - HTTP 1.1 has a fair few request methods that are documented. In this case make a HTTP PATCH request for your encrypted challenge</p><br>
+
+<p><a href="/challenge4">Challenge 4</a> - POST some JSON content for this one (in a similar fashion to challenge 1), in your POST requests JSON body, set "WeGonnaRockDownTo" to "ElectricBoogaloo". This challenges errors are a bit more helpful, you might want to look at a tool called jq also.</p><br>
+
+<p><a href="/challenge5">Challenge 5</a> - An easier cURL challenge now that we're near the end. Send a GET request to port 8080 for this one</p><br>
+
+<p><a href="/challenge6">Challenge 6</a> - Start by running `echo "superMegaFinalFlagFile" > file.txt` then upload that file while using the HTTP PUT method</p><br>
+
+<h2>Notes</h2>
+
+<p>The challenges are made up of two parts: reading the manual page for curl to get the flags to send the correct request and decoding the encoded/encrypted challenge provided from a correct request.</p><br>
+
+<p>Feel free to use wget for style points, and work out how to use any other program if you're interested</p><br>
+
+<p>If you need a hint, feel free to send a request to your selected challenge with /hint1, /hint2 or /hint3 on the end e.g. <a href="/challenge1/hint1">/challenge1/hint1</a></p>
+
+</body></html>
