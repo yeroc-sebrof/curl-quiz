@@ -2,12 +2,18 @@ version: '3'
 
 services:
   quiz-80:
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      network: host
     ports:
       - 80:80
 
   quiz-8080:
-    build: .
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      network: host
     ports:
       - 8080:8080
     env_file:

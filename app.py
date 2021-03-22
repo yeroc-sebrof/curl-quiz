@@ -12,7 +12,7 @@ import re
 import os
 
 app = Flask(__name__)
-auth = HTTPBasicAuth()
+# auth = HTTPBasicAuth()
 
 # Password is part of this list https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/500-worst-passwords.txt
 # users = {
@@ -28,6 +28,8 @@ every_method = ['GET', 'HEAD', 'POST', 'PUT', 'DELETE', 'CONNECT', 'OPTIONS', 'T
 
 app.config['SECRET_KEY'] = '22totallysecure'
 app.config['MAX_CONTENT_PATH'] = 4096
+
+DEBUG=False
 
 # Custom errors
 not_right = [   "",
@@ -126,7 +128,7 @@ def challenge5hint2():
         return "Are you using Curl or wget? I don't think you are"
 
 if (__name__ == '__main__' and os.getenv("PORT") == '8080'):
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    app.run(debug=DEBUG, host='0.0.0.0', port=8080)
     exit(0)
 
 #############################################
@@ -255,4 +257,4 @@ def challenge6hint2():
     return "Have a look for tools that help with XOR"
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=80)
+    app.run(debug=DEBUG,host='0.0.0.0', port=80)
