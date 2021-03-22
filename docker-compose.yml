@@ -3,8 +3,12 @@ version: '3'
 services:
   quiz-80:
     build: .
+    ports:
+      - 80:80
 
   quiz-8080:
     build: .
+    ports:
+      - 8080:8080
     env_file:
       - 8080.env
