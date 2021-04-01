@@ -53,35 +53,10 @@ not_right = [   "",
                 "Please see the following link http://nameofwebsite/help",
                 "Task failed successfully",
                 "Task successfully failed",
-                "big error, much problem",
-                """
-<html><body>
-                16.06.20 JOB00375 ---- THURSDAY,  11 MAR 2021 ----                              <br>
-16.06.20 JOB00375  IRR010I  USERID JAKE     IS ASSIGNED TO THIS JOB.            <br>
-16.06.20 JOB00375  ICH70001I JAKE     LAST ACCESS AT 16:06:19 ON THURSDAY, MARCH<br>
-16.06.20 JOB00375  $HASP373 EXECPGM  STARTED - INIT 1    - CLASS A        - SYS <br>
-16.06.20 JOB00375  CSV003I REQUESTED MODULE VOLDATA  NOT FOUND                  <br>
-16.06.20 JOB00375  CSV028I ABEND806-04  JOBNAME=EXECPGM   STEPNAME=STEP01       <br>
-16.06.20 JOB00375  IEA995I SYMPTOM DUMP OUTPUT  915                             <br>
-   915             SYSTEM COMPLETION CODE=806  REASON CODE=00000004             <br>
-   915              TIME=16.06.20  SEQ=00229  CPU=0000  ASID=001B               <br>
-   915              PSW AT TIME OF ERROR  070C1000   812D3852  ILC 2  INTC 0D   <br>
-   915                NO ACTIVE MODULE FOUND                                    <br>
-   915                NAME=UNKNOWN                                              <br>
-   915                DATA AT PSW  012D384C - 8400181E  0A0D18FB  180C181D      <br>
-   915                AR/GR 0: 001FBFFF/00001F00   1: 00000000/84806000         <br>
-   915                      2: 00000000/00000000   3: 00000000/00000000         <br>
-   915                      4: 00000000/00000000   5: 00000000/008CBEC0         <br>
-   915                      6: 00000000/000000FF   7: 00000000/00000000         <br>
-   915                      8: 00000000/7F6B5050   9: 00000000/012D3D78         <br>
-   915                      A: 00000000/00000000   B: 00000000/00000000         <br>
-   915                      C: 00000000/00000000   D: 00000000/7F6B5050         <br>
-   915                      E: 00000000/84806000   F: 00000000/00000004         <br>
-   915              END OF SYMPTOM DUMP    <br>
-</body></html>
-                """
+                "big error, much problem"
             ]
 
+errormsg = not_right + "\n" # adding newline otherwise terminal looks messy
 ############################################# custom error handling
 
 @app.route('/', methods=['GET'])
@@ -90,11 +65,11 @@ def index():
 
 @app.errorhandler(404)
 def not_found(e):
-    return pick_one(not_right)
+    return pick_one(errormsg)
 
 @app.errorhandler(405)
 def method_not_allowed(e):
-    return pick_one(not_right)
+    return pick_one(errormsg)
 
 # @app.errorhandler(500)
 # def internal_err(e):
@@ -108,7 +83,7 @@ def challenge5():
     if (os.getenv("PORT") == '8080' and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Challenge String: Vjgfqgug it a qugwvy dopo vrql"
     else:
-        return pick_one(not_right)
+        return pick_one(not_right) #leaving this one as newline not required for webpage
 
 @app.route('/challenge5/hint1', methods=every_method)
 def challenge5hint1():
@@ -118,21 +93,21 @@ def challenge5hint1():
         else:
             return "Have a look into common TCP ports"
     else:
-        return "Are you using Curl or wget? I don't think you are"
+        return "I wouldn't look for hints on a cURL challenge using the browser..." # Making it more obvious that user should curl for hints
 
 @app.route('/challenge5/hint2', methods=every_method)
 def challenge5hint2():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Have you heard of Vigenere?"
     else:
-        return "Are you using Curl or wget? I don't think you are"
+        return "I wouldn't look for hints on a cURL challenge using the browser..."
 
 @app.route('/challenge5/hint3', methods=every_method)
 def challenge5hint3():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "The code is ababdcdc"
     else:
-        return "Are you using Curl or wget? I don't think you are"
+        return "I wouldn't look for hints on a cURL challenge using the browser..."
 
 if (__name__ == '__main__' and os.getenv("PORT") == '8080'):
     app.run(debug=DEBUG, host='0.0.0.0', port=8080)
@@ -152,7 +127,7 @@ def challenge1hint1():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Have a look at this https://www.seobility.net/en/wiki/GET_Parameters#Using_Get_Parameters, also think about how your Curl command is being interpreted on the CLI"
     else:
-        return "Are you using Curl or wget? I don't think you are"
+        return "I wouldn't look for hints on a cURL challenge using the browser..."
 
 @app.route('/challenge1/hint2', methods=every_method)
 def challenge1hint2():
@@ -172,11 +147,11 @@ def challenge2hint1():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Make sure to run `man curl`"
     else:
-        return "Are you using Curl or wget? I don't think you are"
+        return "I wouldn't look for hints on a cURL challenge using the browser..."
 
 @app.route('/challenge2/hint2', methods=every_method)
 def challenge2hint2():
-    return "Have a look at old encoding methods, this ones only been around for almost 2000 years. Even the Romans know how to decrypt it"
+    return "Have a look at old encoding methods, this one's only been around for about 2000 years. Even the Romans know how to decrypt it"
 
 #############################################
 
@@ -192,7 +167,7 @@ def challenge3hint1():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Make sure to run `man curl` to see how to set a different HTTP method"
     else:
-        return "Are you using Curl or wget? I don't think you are"
+        return "I wouldn't look for hints on a cURL challenge using the browser..."
 
 @app.route('/challenge3/hint2', methods=every_method)
 def challenge3hint2():
@@ -231,7 +206,7 @@ def challenge4hint1():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Make sure to run `man curl` to see how to set content type and define a content body"
     else:
-        return "Are you using Curl or wget? I don't think you are"
+        return "I wouldn't look for hints on a cURL challenge using the browser..."
 
 @app.route('/challenge4/hint2', methods=every_method)
 def challenge4hint2():
@@ -257,10 +232,14 @@ def challenge6hint1():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Make sure to run `man curl` to see how to put a file into the request body"
     else:
-        return "Are you using Curl or wget? I don't think you are"
+        return "I wouldn't look for hints on a cURL challenge using the browser..."
 
 @app.route('/challenge6/hint2', methods=every_method)
 def challenge6hint2():
+    return "There might be multiple ways of using HTTP PUT..." #Because I got confused I wanted to add this hint
+
+@app.route('/challenge6/hint3', methods=every_method)
+def challenge6hint3():
     return "Have a look for tools that help with XOR"
 
 if __name__ == '__main__':
