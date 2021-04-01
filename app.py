@@ -56,7 +56,9 @@ not_right = [   "",
                 "big error, much problem"
             ]
 
-errormsg = not_right + "\n" # adding newline otherwise terminal looks messy
+errormsg =[]
+for i in not_right:
+    errormsg.append(i + "\n") # adding newline otherwise terminal looks messy
 ############################################# custom error handling
 
 @app.route('/', methods=['GET'])
@@ -83,7 +85,7 @@ def challenge5():
     if (os.getenv("PORT") == '8080' and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Challenge String: Vjgfqgug it a qugwvy dopo vrql"
     else:
-        return pick_one(not_right) #leaving this one as newline not required for webpage
+        return pick_one(errormsg) 
 
 @app.route('/challenge5/hint1', methods=every_method)
 def challenge5hint1():
@@ -120,7 +122,7 @@ def challenge1():
     if (request.args.get("whoAreYou") == "AHacker" and request.args.get("areYouSure") == "yes" and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Challenge String: hfkvi-xllo-xozhhrx-xrksvi"
     else:
-        return pick_one(not_right)
+        return pick_one(errormsg)
 
 @app.route('/challenge1/hint1', methods=every_method)
 def challenge1hint1():
@@ -140,7 +142,7 @@ def challenge2():
     if (request.environ.get('SERVER_PROTOCOL') == "HTTP/1.0" and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Challenge String: MXE-MEKBT-XQLU-ADEMD-JXQJ-ZKBYKI-SQUIQH'I-SYFXUH-MEKBT-RU-IE-FEFKBQH-QBB-JXUIU-OUQHI-BQJUH.QDOMQO-LQKBJYDW-TYIJEHJ-THKCCEDT-YI-JXU-VBQW.AUUF-JXU-TQIXUI"
     else:
-        return pick_one(not_right)
+        return pick_one(errormsg)
 
 @app.route('/challenge2/hint1', methods=every_method)
 def challenge2hint1():
@@ -160,7 +162,7 @@ def challenge3():
     if (request.method == "PATCH" and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         return "Challenge String: 5c577753706cdcef8621a9c0c1922158"
     else:
-        return pick_one(not_right)
+        return pick_one(errormsg)
 
 @app.route('/challenge3/hint1', methods=every_method)
 def challenge3hint1():
@@ -199,7 +201,7 @@ def challenge4():
             # Give a little hint for those who are halfway there
             return "I've never heard of %s" % request.content_type
     else:
-        return pick_one(not_right)
+        return pick_one(errormsg)
 
 @app.route('/challenge4/hint1', methods=every_method)
 def challenge4hint1():
@@ -224,7 +226,7 @@ def challenge6():
 
 This one's tricky so you'll get a hint at the start here. The cipher text is represented above in Hex and a SECURE key has been used to hide its content using XOR.
 """    
-    return pick_one(not_right)
+    return pick_one(errormsg)
 
 
 @app.route('/challenge6/hint1', methods=every_method)
@@ -236,7 +238,6 @@ def challenge6hint1():
 
 @app.route('/challenge6/hint2', methods=every_method)
 def challenge6hint2():
-    return "There might be multiple ways of using HTTP PUT..." #Because I got confused I wanted to add this hint
 
 @app.route('/challenge6/hint3', methods=every_method)
 def challenge6hint3():
