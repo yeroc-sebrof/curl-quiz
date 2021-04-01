@@ -1,5 +1,5 @@
 h1 {
-    color: lightgreen
+    color: #0F564D /*the lighter green was a little hard to read + this is the curl logo green*/
 }
 
 body {
@@ -7,5 +7,5 @@ body {
 }
 
 h2 {
-    color: blue
+    color:#093754 /*curl logo blue*/
 }
