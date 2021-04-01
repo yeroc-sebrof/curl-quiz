@@ -238,6 +238,7 @@ def challenge6hint1():
 
 @app.route('/challenge6/hint2', methods=every_method)
 def challenge6hint2():
+    return "There might be multiple ways of using HTTP PUT..." #Because I got confused I wanted to add this hint
 
 @app.route('/challenge6/hint3', methods=every_method)
 def challenge6hint3():
