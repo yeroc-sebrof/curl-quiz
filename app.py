@@ -83,7 +83,7 @@ def method_not_allowed(e):
 @app.route('/challenge5', methods=['GET'])
 def challenge5():
     if (os.getenv("PORT") == '8080' and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
-        return "Challenge String: Vjgfqgug it a qugwvy dopo vrql"
+        return "Challenge String: Vjgfqgug it a qugwvy dopo vrql\n"
     else:
         return pick_one(errormsg) 
 
@@ -91,25 +91,25 @@ def challenge5():
 def challenge5hint1():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
         if (os.getenv("PORT") == '8080'):
-            return "Have a look at old encoding methods, this ones been around for almost 2000 years"
+            return "Have a look at old encoding methods, this ones been around for almost 2000 years\n"
         else:
-            return "Have a look into common TCP ports"
+            return "Have a look into common TCP ports\n"
     else:
-        return "I wouldn't look for hints on a cURL challenge using the browser..." # Making it more obvious that user should curl for hints
+        return "I wouldn't look for hints on a cURL challenge using the browser...\n" # Making it more obvious that user should curl for hints
 
 @app.route('/challenge5/hint2', methods=every_method)
 def challenge5hint2():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
-        return "Have you heard of Vigenere?"
+        return "Have you heard of Vigenere?\n"
     else:
-        return "I wouldn't look for hints on a cURL challenge using the browser..."
+        return "I wouldn't look for hints on a cURL challenge using the browser...\n"
 
 @app.route('/challenge5/hint3', methods=every_method)
 def challenge5hint3():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
-        return "The code is ababdcdc"
+        return "The code is ababdcdc\n"
     else:
-        return "I wouldn't look for hints on a cURL challenge using the browser..."
+        return "I wouldn't look for hints on a cURL challenge using the browser...\n"
 
 if (__name__ == '__main__' and os.getenv("PORT") == '8080'):
     app.run(debug=DEBUG, host='0.0.0.0', port=8080)
@@ -120,60 +120,60 @@ if (__name__ == '__main__' and os.getenv("PORT") == '8080'):
 @app.route('/challenge1', methods=['GET'])
 def challenge1():
     if (request.args.get("whoAreYou") == "AHacker" and request.args.get("areYouSure") == "yes" and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
-        return "Challenge String: hfkvi-xllo-xozhhrx-xrksvi"
+        return "Challenge String: hfkvi-xllo-xozhhrx-xrksvi\n"
     else:
         return pick_one(errormsg)
 
 @app.route('/challenge1/hint1', methods=every_method)
 def challenge1hint1():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
-        return "Have a look at this https://www.seobility.net/en/wiki/GET_Parameters#Using_Get_Parameters, also think about how your Curl command is being interpreted on the CLI"
+        return "Have a look at this https://www.seobility.net/en/wiki/GET_Parameters#Using_Get_Parameters, also think about how your Curl command is being interpreted on the CLI\n"
     else:
-        return "I wouldn't look for hints on a cURL challenge using the browser..."
+        return "I wouldn't look for hints on a cURL challenge using the browser...\n"
 
 @app.route('/challenge1/hint2', methods=every_method)
 def challenge1hint2():
-    return "Have a look at old encoding methods, this ones been around for 3000 years so will be super secure."
+    return "Have a look at old encoding methods, this ones been around for 3000 years so will be super secure.\n"
 
 #############################################
 
 @app.route('/challenge2', methods=['GET'])
 def challenge2():
     if (request.environ.get('SERVER_PROTOCOL') == "HTTP/1.0" and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
-        return "Challenge String: MXE-MEKBT-XQLU-ADEMD-JXQJ-ZKBYKI-SQUIQH'I-SYFXUH-MEKBT-RU-IE-FEFKBQH-QBB-JXUIU-OUQHI-BQJUH.QDOMQO-LQKBJYDW-TYIJEHJ-THKCCEDT-YI-JXU-VBQW.AUUF-JXU-TQIXUI"
+        return "Challenge String: MXE-MEKBT-XQLU-ADEMD-JXQJ-ZKBYKI-SQUIQH'I-SYFXUH-MEKBT-RU-IE-FEFKBQH-QBB-JXUIU-OUQHI-BQJUH.QDOMQO-LQKBJYDW-TYIJEHJ-THKCCEDT-YI-JXU-VBQW.AUUF-JXU-TQIXUI\n"
     else:
         return pick_one(errormsg)
 
 @app.route('/challenge2/hint1', methods=every_method)
 def challenge2hint1():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
-        return "Make sure to run `man curl`"
+        return "Make sure to run `man curl`\n"
     else:
-        return "I wouldn't look for hints on a cURL challenge using the browser..."
+        return "I wouldn't look for hints on a cURL challenge using the browser...\n"
 
 @app.route('/challenge2/hint2', methods=every_method)
 def challenge2hint2():
-    return "Have a look at old encoding methods, this one's only been around for about 2000 years. Even the Romans know how to decrypt it"
+    return "Have a look at old encoding methods, this one's only been around for about 2000 years. Even the Romans know how to decrypt it\n"
 
 #############################################
 
 @app.route('/challenge3', methods=every_method)
 def challenge3():
     if (request.method == "PATCH" and re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
-        return "Challenge String: 5c577753706cdcef8621a9c0c1922158"
+        return "Challenge String: 5c577753706cdcef8621a9c0c1922158\n"
     else:
         return pick_one(errormsg)
 
 @app.route('/challenge3/hint1', methods=every_method)
 def challenge3hint1():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
-        return "Make sure to run `man curl` to see how to set a different HTTP method"
+        return "Make sure to run `man curl` to see how to set a different HTTP method\n"
     else:
-        return "I wouldn't look for hints on a cURL challenge using the browser..."
+        return "I wouldn't look for hints on a cURL challenge using the browser...\n"
 
 @app.route('/challenge3/hint2', methods=every_method)
 def challenge3hint2():
-    return "Look into encryption that provides a string of the same length, Cyberchef has some good tools for identifying this but you might need to google for something else"
+    return "Look into encryption that provides a string of the same length, Cyberchef has some good tools for identifying this but you might need to google for something else\n"
 
 # https://www.md5online.org/md5-decrypt.html
 
@@ -186,13 +186,13 @@ def challenge4():
             try:
                 request.get_json(force=True)
             except:
-                return "I'd never recommend reading RFC 8259 as it's a boring memo but your JSON isn't valid"
+                return "I'd never recommend reading RFC 8259 as it's a boring memo but your JSON isn't valid\n"
 
             content = request.get_json()
 
             try:
                 if (content['WeGonnaRockDownTo'] == "ElectricBoogaloo"):
-                    return "Challenge String: ;f#3*<,\"[<@sLCU@PTrb"
+                    return "Challenge String: ;f#3*<,\"[<@sLCU@PTrb\n"
             except:
                 pass
                             
@@ -206,13 +206,13 @@ def challenge4():
 @app.route('/challenge4/hint1', methods=every_method)
 def challenge4hint1():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
-        return "Make sure to run `man curl` to see how to set content type and define a content body"
+        return "Make sure to run `man curl` to see how to set content type and define a content body\n"
     else:
-        return "I wouldn't look for hints on a cURL challenge using the browser..."
+        return "I wouldn't look for hints on a cURL challenge using the browser...\n"
 
 @app.route('/challenge4/hint2', methods=every_method)
 def challenge4hint2():
-    return "Look into encoding methods like Base64"
+    return "Look into encoding methods like Base64\n"
 
 
 #############################################
@@ -232,17 +232,17 @@ This one's tricky so you'll get a hint at the start here. The cipher text is rep
 @app.route('/challenge6/hint1', methods=every_method)
 def challenge6hint1():
     if (re.search('(curl|wget)\/*', request.headers.get('User-Agent').lower())):
-        return "Make sure to run `man curl` to see how to put a file into the request body"
+        return "Make sure to run `man curl` to see how to put a file into the request body\n"
     else:
-        return "I wouldn't look for hints on a cURL challenge using the browser..."
+        return "I wouldn't look for hints on a cURL challenge using the browser...\n"
 
 @app.route('/challenge6/hint2', methods=every_method)
 def challenge6hint2():
-    return "There might be multiple ways of using HTTP PUT..." #Because I got confused I wanted to add this hint
+    return "There might be multiple ways of using HTTP PUT...\n" #Because I got confused I wanted to add this hint
 
 @app.route('/challenge6/hint3', methods=every_method)
 def challenge6hint3():
-    return "Have a look for tools that help with XOR"
+    return "Have a look for tools that help with XOR\n"
 
 if __name__ == '__main__':
     app.run(debug=DEBUG,host='0.0.0.0', port=80)
