@@ -8,7 +8,7 @@ Don't forget to use Curl's man page if you need some help!
 
 ### Running locally
 
-If you would like to do this CTF locally, write the following commands on the command line:
+If you would like to do this CTF locally, write the following commands on the command line, (first ensuring that both docker and docker-compose are installed)
 
 1. `git clone https://github.com/yeroc-sebrof/curl-quiz.git`
 2. `cd curl-quiz`
