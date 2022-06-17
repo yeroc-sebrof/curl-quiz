@@ -2,6 +2,8 @@
 
 This lab should be easy enough, apply some CLI knowledge and the man page for curl to get the encoding/encryption challenges. Once you have the challenge you need to decode it to get the flag. Your target is the web server at 192.168.22.100
 
+Don't forget to use Curl's man page if you need some help!
+
 ---
 
 ### Challenge 1 - Different port + GET Param and Atbash
@@ -12,6 +14,8 @@ To get the encoding challenge for this one send a GET request to 192.168.22.100/
  <summary markdown="span">Answer</summary>
 
 `curl http://192.168.22.100/challenge1?whoAreYou=AHacker&areYouSure=yes`
+
+- **NOTE**: slashes are required in front of the `?` and `&` symbols (`\?` and `\&` respectively)
 
 - Challenge String: hfkvi-xllo-xozhhrx-xrksvi
 - Atbash is the reversing of an alphabet to make z>a == a>z
@@ -28,7 +32,7 @@ To get this encoding challenge make a HTTP/1.0 request to http://192.168.22.100/
 <details>
  <summary markdown="span">Answer</summary>
 
-`curl --http1.0 http://172.17.0.2/challenge2`
+`curl --http1.0 http://192.168.22.100/challenge2`
 
 - Challenge String: `MXE-MEKBT-XQLU-ADEMD-JXQJ-ZKBYKI-SQUIQH'I-SYFXUH-MEKBT-RU-IE-FEFKBQH-QBB-JXUIU-OUQHI-BQJUH.QDOMQO-LQKBJYDW-TYIJEHJ-THKCCEDT-YI-JXU-VBQW.AUUF-JXU-TQIXUI`
 - A Rotation of 10 characters using the Caesar/Rot13 Cipher
@@ -44,7 +48,7 @@ HTTP 1.1 has a fair few methods that are documented but anyone could make any me
 <details>
  <summary markdown="span">Answer</summary>
 
-`curl -X PATCH http://172.17.0.2/challenge3`
+`curl -X PATCH http://192.168.22.100/challenge3`
 
 - Challenge String: 5c577753706cdcef8621a9c0c1922158
 - https://www.md5online.org/md5-decrypt.html is the first result on Google when searching "md5 decrypt"
@@ -60,7 +64,7 @@ POST some JSON content for this one (in a similar fashion to above where encodin
 <details>
  <summary markdown="span">Answer</summary>
 
-`curl -X POST -H "Content-Type: application/json" -d '{"WeGonnaRockDownTo":"ElectricBoogaloo"}' http://172.17.0.2/challenge4`
+`curl -X POST -H "Content-Type: application/json" -d '{"WeGonnaRockDownTo":"ElectricBoogaloo"}' http://192.168.22.100/challenge4`
 
 - Challenge String: `;f#3*<,"[<@sLCU@PTrb`
 - Base85 Decode to: `SlNPTiBpcyBjb29s`
@@ -73,13 +77,15 @@ POST some JSON content for this one (in a similar fashion to above where encodin
 
 An easy challenge now that we're near the end. Send a GET request to port 8080 for this one
 
+- FIXME: `curl: (7) Failed to connect to 192.168.0.113 port 8080 after 0 ms: Connection refused`
+
 <details>
  <summary markdown="span">Answer</summary>
 
-`curl "http://172.17.0.2:8080/challenge5"`
+`curl "http://192.168.22.100:8080/challenge5"`
 
 - Challenge String: `Vjgfqgug it a qugwvy dopo vrql`
-- https://www.boxentriq.com/code-breaking/vigenere-cipher has a auto-solver
+- https://www.boxentriq.com/code-breaking/vigenere-cipher has an auto-solver
 - The secret key is `ababdcdc`
 - Decodes to: `vigenere is a pretty cool tool`
 </details>
