@@ -6,6 +6,16 @@ Don't forget to use Curl's man page if you need some help!
 
 ---
 
+### Running locally
+
+If you would like to do this CTF locally, write the following commands on the command line:
+
+1. `git clone https://github.com/yeroc-sebrof/curl-quiz.git`
+2. `cd curl-quiz`
+3. `docker-compose up`
+
+The final command is a Docker command, this is the preferred method of running the CTF locally as it abstracts any confusing stuff away from you, if you would like to run it locally outside of a Docker container the only difference will be in challenge5, where you will need to kill the running Flask process and re-run with the bash variable `PORT=8080`
+
 ### Challenge 1 - Different port + GET Param and Atbash
 
 To get the encoding challenge for this one send a GET request to 192.168.22.100/challenge1 with a two parameters, one called whoAreYou with the value AHacker and the other called areYouSure with the value yes
@@ -76,8 +86,6 @@ POST some JSON content for this one (in a similar fashion to above where encodin
 ### Challenge 5 - Request a different TCP Port and Vigenere Cipher
 
 An easy challenge now that we're near the end. Send a GET request to port 8080 for this one
-
-- FIXME: `curl: (7) Failed to connect to 192.168.0.113 port 8080 after 0 ms: Connection refused`
 
 <details>
  <summary markdown="span">Answer</summary>
